@@ -22,8 +22,8 @@ NetService.CreateSchema("CreateTextChannel", {"chat_channel", "entity", "bool"})
 
 -- DestroyChannel: {ChannelID: obj_id}
 NetService.CreateSchema("DestroyChannel", {"chat_channel"})
--- SendChannelInvite: {ChannelID: obj_id, Who: player}
-NetService.CreateSchema("SendChannelInvite", {"chat_channel", "entity"})
+-- ChatChannelInvite: {ChannelID: obj_id, Who: player}
+NetService.CreateSchema("ChatChannelInvite", {"chat_channel", "entity"})
 -- PlayerJoinChannel: {ChannelID: obj_id, Who: player}
 NetService.CreateSchema("PlayerJoinChannel", {"chat_channel", "entity"})
 -- PlayerLeaveChannel: {ChannelID: obj_id, Who: player}

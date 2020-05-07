@@ -40,10 +40,10 @@ NetService.Receive("DestroyChannel", ChatNetService.DestroyChannel)
 --- Channel invite received
 ---@param channel ChatChannel | "Channel to join"
 ---@param who Player | "Who the invite is being sent to"
-function ChatNetService.SendChannelInvite(channel, who)
+function ChatNetService.ChatChannelInvite(channel, who)
     -- Emphasize channel in UI 
 end
-NetService.Receive("SendChannelInvite", ChatNetService.SendChannelInvite)
+NetService.Receive("ChatChannelInvite", ChatNetService.ChatChannelInvite)
 
 --- Player joined the channel
 ---@param channel ChatChannel
