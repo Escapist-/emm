@@ -31,8 +31,18 @@ NetService.Receive("ReqCreateTextChannel", ChatService.ReqCreateTextChannel)
 --- Handle request to join a channel
 ---@param ply Player | "Player requesting to join channel"
 ---@param channel ChatChannel | "Channel to put the player into"
+<<<<<<< HEAD
 function ChatService.ReqJoinChannel(ply, channel)
     -- 
+=======
+function ChatNetService.ReqJoinChannel(ply, channel)
+    -- Check if the target channel is private
+    -- ?? If it is send a join error ??
+    -- Remove the player from their current channel
+    -- Broadcast player left signal
+    -- Add the player to the new channel
+    -- Broadcast player joined signal
+>>>>>>> 69b29dfbaad1b789073abab07bdf29abbaf29239
 end
 NetService.Receive("ReqJoinChannel", ChatService.ReqJoinChannel)
 
@@ -40,13 +50,51 @@ NetService.Receive("ReqJoinChannel", ChatService.ReqJoinChannel)
 ---@param ply Player | "Player requesting to invite"
 ---@param channel ChatChannel | "Chat channel the player is requesting to invite to"
 ---@param recipient Player | "Recipient of the invite"
+<<<<<<< HEAD
 function ChatService.ReqChannelInvite(ply, channel, recipient)
+=======
+function ChatNetService.ReqChannelInvite(ply, channel, recipient)
+    -- Check if the ply has op flag
+    -- Send SendChannelInvite -> recipient + everyone in the channel
+>>>>>>> 69b29dfbaad1b789073abab07bdf29abbaf29239
 end
 NetService.Receive("ReqChannelInvite", ChatService.ReqChannelInvite)
 
+<<<<<<< HEAD
 --- Handle request to leave a channel
 ---@param ply Player | "Player requesting to leave"
 ---@param channel ChatChannel | "Channel the player is leaving"
 function ChatService.ReqLeaveChannel(ply, channel)
 end
 NetService.Receive("ReqLeaveChannel", ChatService.ReqLeaveChannel)
+=======
+--- Handle request to accept invite to chat channel
+---@param recipient Player | "Player that accepted the invite"
+---@param channel ChatChannel | "Chat channel to join"
+function ChatNetService.ReqAcceptChatInvite(recipient, channel)
+    -- Remove player from current channel
+    -- Broadcast PlayerLeaveChannel
+    -- Put player in new channel
+    -- Broadcast PlayerJoinChannel
+end
+NetService.Receive("ReqAcceptChatInvite", ChatNetService.ReqAcceptChatInvite)
+
+--- Handle request to sync lobbies to a player
+---@param ply Player | "Player to send the lobbies to"
+function ChatNetService.ReqSyncLobbies(ply) 
+    -- Send lobby data
+end
+NetService.Receive("ReqSyncLobbies", ChatService.ReqSyncLobbies)
+-- -- ?? All the player is doing is asking to be in the public ??
+-- -- ?? channel so should we keep this request                ??
+-- --- Handle request to leave a channel
+-- ---@param ply Player | "Player requesting to leave"
+-- ---@param channel ChatChannel | "Channel the player is leaving"
+-- function ChatNetService.ReqLeaveChannel(ply, channel)
+--     -- Remove player from current channel
+--     -- Broadcast PlayerLeaveChannel
+--     -- Put player in new channel
+--     -- Broadcast PlayerJoinChannel
+-- end
+-- NetService.Receive("ReqLeaveChannel", ChatNetService.ReqLeaveChannel)
+>>>>>>> 69b29dfbaad1b789073abab07bdf29abbaf29239

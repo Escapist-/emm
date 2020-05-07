@@ -2,12 +2,25 @@ ChatChannel = ChatChannel or Class.New()
 ChatChannel.MUTED = 1   --0b0001
 ChatChannel.OP = 1<<1   --0b0010
 
+<<<<<<< HEAD
 function ChatChannel:Init(id, host, private)
     self.id = id
     self.host = host
     self.private = private
     self.players = {}
     self.bans = {}
+=======
+function ChatChannel:Init()
+    self.id = 0
+    self.voice = false
+    self.host = nil
+    self.private = false
+    -- We can search through flags 
+    -- to find out which players are
+    -- in a lobby
+    -- self.players = {}
+    self.flags = {}
+>>>>>>> 69b29dfbaad1b789073abab07bdf29abbaf29239
 end
 
 function ChatChannel:GetPlayers()
