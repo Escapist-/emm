@@ -31,7 +31,12 @@ NetService.Receive("ReqCreateTextChannel", ChatNetService.ReqCreateTextChannel)
 ---@param ply Player | "Player requesting to join channel"
 ---@param channel ChatChannel | "Channel to put the player into"
 function ChatNetService.ReqJoinChannel(ply, channel)
-    -- 
+    -- Check if the target channel is private
+    -- ?? If it is send a join error ??
+    -- Remove the player from their current channel
+    -- Broadcast player left signal
+    -- Add the player to the new channel
+    -- Broadcast player joined signal
 end
 NetService.Receive("ReqJoinChannel", ChatNetService.ReqJoinChannel)
 
@@ -40,12 +45,28 @@ NetService.Receive("ReqJoinChannel", ChatNetService.ReqJoinChannel)
 ---@param channel ChatChannel | "Chat channel the player is requesting to invite to"
 ---@param recipient Player | "Recipient of the invite"
 function ChatNetService.ReqChannelInvite(ply, channel, recipient)
+    -- Check if the ply has op flag
+    -- Send SendChannelInvite -> recipient + everyone in the channel
 end
 NetService.Receive("ReqChannelInvite", ChatNetService.ReqChannelInvite)
 
---- Handle request to leave a channel
----@param ply Player | "Player requesting to leave"
----@param channel ChatChannel | "Channel the player is leaving"
-function ChatNetService.ReqLeaveChannel(ply, channel)
+function ChatNetService.ReqAcceptChatInvite(channel, recipient)
+    -- Remove player from current channel
+    -- Broadcast PlayerLeaveChannel
+    -- Put player in new channel
+    -- Broadcast PlayerJoinChannel
 end
-NetService.Receive("ReqLeaveChannel", ChatNetService.ReqLeaveChannel)
+NetService.Receive("ReqAcceptChatInvite", ChatNetService.ReqAcceptChatInvite)
+
+-- -- ?? All the player is doing is asking to be in the public ??
+-- -- ?? channel so should we keep this request                ??
+-- --- Handle request to leave a channel
+-- ---@param ply Player | "Player requesting to leave"
+-- ---@param channel ChatChannel | "Channel the player is leaving"
+-- function ChatNetService.ReqLeaveChannel(ply, channel)
+--     -- Remove player from current channel
+--     -- Broadcast PlayerLeaveChannel
+--     -- Put player in new channel
+--     -- Broadcast PlayerJoinChannel
+-- end
+-- NetService.Receive("ReqLeaveChannel", ChatNetService.ReqLeaveChannel)
