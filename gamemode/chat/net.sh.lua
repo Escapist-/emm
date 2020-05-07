@@ -10,9 +10,9 @@ end
 
 -- Server -> Client
 -- CreateVoiceChannel: {ChannelID: obj_id, Creator: player, isPrivate: bool}
-NetService.CreateSchema("CreateVoiceChannel", {"chat_channel", "entity", "bool"})
+NetService.CreateSchema("CreateVoiceChannel", {"id", "entity", "bool"})
 -- CreateTextChannel: {ChannelID: obj_id, Creator: player, isPrivate: bool}
-NetService.CreateSchema("CreateTextChannel", {"chat_channel", "entity", "bool"})
+NetService.CreateSchema("CreateTextChannel", {"id", "entity", "bool"})
 -- -- SyncChannelPlayerList: {ChannelID: obj_id, Players: entities}
 -- NetService.CreateSchema("SyncChannelPlayerList", {"chat_channel", "entities"})
 -- -- SyncChannelMuteList: {ChannelID: obj_id, Players: entities}
