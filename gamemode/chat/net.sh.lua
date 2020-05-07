@@ -13,12 +13,8 @@ end
 NetService.CreateSchema("CreateVoiceChannel", {"chat_channel", "entity", "bool"})
 -- CreateTextChannel: {ChannelID: obj_id, Creator: player, isPrivate: bool}
 NetService.CreateSchema("CreateTextChannel", {"chat_channel", "entity", "bool"})
--- SyncChannelPlayerList: {ChannelID: obj_id, Players: entities}
-NetService.CreateSchema("SyncChannelPlayerList", {"chat_channel", "entities"})
--- SyncChannelMuteList: {ChannelID: obj_id, Players: entities}
-NetService.CreateSchema("SyncChannelMuteList", {"chat_channel", "entities"})
--- SyncChannelBanList: {ChannelID: obj_id, Players: entities}
-NetService.CreateSchema("SyncChannelBanList", {"chat_channel", "entities"})
+--UpdatePlayerChatFlags: {ChannelID: obj_id, Who: entity, Flags: uint8}
+NetService.CreateUpstreamSchema("UpdatePlayerChatFlags", {"chat_channel", "entity", "id"})
 
 -- DestroyChannel: {ChannelID: obj_id}
 NetService.CreateSchema("DestroyChannel", {"chat_channel"})
@@ -34,10 +30,13 @@ NetService.CreateSchema("PlayerLeaveChannel", {"chat_channel", "entity"})
 NetService.CreateUpstreamSchema("ReqCreateVoiceChannel", {"bool"})
 -- ReqCreateTextChannel: {isPrivate: bool}
 NetService.CreateUpstreamSchema("ReqCreateTextChannel", {"bool"})
-
 -- ReqJoinChannel: {ChannelID: obj_id}
 NetService.CreateUpstreamSchema("ReqJoinChannel", {"chat_channel"})
 -- ReqChannelInvite: {ChannelID: obj_id, Who: entity}
 NetService.CreateUpstreamSchema("ReqChannelInvite", {"chat_channel", "entity"})
--- LeaveChannel: {ChannelID: obj_id}
+-- ReqLeaveChannel: {ChannelID: obj_id}
 NetService.CreateUpstreamSchema("ReqLeaveChannel", {"chat_channel"})
+-- ReqChannelBanPlayer: {ChannelID: obj_id, Who: entity}
+NetService.CreateUpstreamSchema("ReqChannelBanPlayer", {"chat_channel", "entity"})
+-- ReqChannelSetFlags: {ChannelID: obj_id, Who: entity, Flag: uint8, Set: bool}
+NetService.CreateUpstreamSchema("ReqChannelSetFlags", {"chat_channel", "entity", "id", "boolean"})
