@@ -58,6 +58,12 @@ function ChatNetService.ReqAcceptChatInvite(channel, recipient)
 end
 NetService.Receive("ReqAcceptChatInvite", ChatNetService.ReqAcceptChatInvite)
 
+--- Handle request to sync lobbies to a player
+---@param ply Player | "Player to send the lobbies to"
+function ChatNetService.ReqSyncLobbies(ply) 
+    -- Send lobby data
+end
+NetService.Receive("ReqSyncLobbies", ChatService.ReqSyncLobbies)
 -- -- ?? All the player is doing is asking to be in the public ??
 -- -- ?? channel so should we keep this request                ??
 -- --- Handle request to leave a channel
